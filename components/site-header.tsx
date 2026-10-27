@@ -7,12 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { Logo } from "@/components/logo";
 import { getLenis } from "@/components/providers";
-
-const links = [
-  { href: "/#collection", label: "Collection" },
-  { href: "/#philosophy", label: "Philosophy" },
-  { href: "/#inquiry", label: "Inquiry" },
-];
+import { siteLinks } from "@/lib/nav";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -90,16 +85,22 @@ export function SiteHeader() {
           </Link>
         )}
         <nav className="pointer-events-auto hidden items-center gap-9 md:flex" aria-label="Primary">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={(event) => onNavigate(event, link.href)}
-              className="text-[0.68rem] tracking-[0.22em] text-[#d9d2c6] uppercase transition-colors hover:text-white"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {siteLinks.map((link) => {
+            const current = link.href === "/tools" && pathname.startsWith("/tools");
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={current ? "page" : undefined}
+                onClick={(event) => onNavigate(event, link.href)}
+                className={`text-[0.68rem] tracking-[0.22em] uppercase transition-colors hover:text-white ${
+                  current ? "text-white" : "text-[#d9d2c6]"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
         <button
           type="button"
@@ -124,7 +125,7 @@ export function SiteHeader() {
             className="fixed inset-0 z-40 flex flex-col justify-end bg-[#0a0a0a] px-[6vw] pt-28 pb-16 md:hidden"
           >
             <ul className="space-y-6">
-              {links.map((link, index) => (
+              {siteLinks.map((link, index) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

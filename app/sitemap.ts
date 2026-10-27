@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = getSiteUrl();
   return [
     { url: siteUrl, changeFrequency: "monthly", priority: 1 },
+    { url: `${siteUrl}/tools`, changeFrequency: "monthly", priority: 0.6 },
     ...properties.map((property) => ({
       url: `${siteUrl}/collection/${property.slug}`,
       changeFrequency: "monthly" as const,
