@@ -1,0 +1,59 @@
+name: Update property tax data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # ACS release timing varies. Check once a month in the months a new vintage usually appears.
+    - cron: "0 14 15 1,10,11,12 *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch ACS rates
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+        run: npm run update-tax-data
+
+      - name: Compose pull request body
+        run: |
+          {
+            echo "Updates effective residential property tax rates from the U.S. Census Bureau ACS."
+            echo
+            echo "Median real estate taxes paid (B25103_001E) divided by median home value (B25077_001E)."
+            echo
+            if [ -f data/changes-report.md ]; then
+              cat data/changes-report.md
+            else
+              echo "No state moved by more than 0.5 percentage points."
+            fi
+          } > /tmp/tax-pr-body.md
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/update-tax-data
+          delete-branch: true
+          commit-message: "Update ACS effective property tax rates"
+          title: "Update state property tax rates"
+          body-path: /tmp/tax-pr-body.md
+          add-paths: |
+            data/state-tax-rates.json
+            data/changes-report.md
