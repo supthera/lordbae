@@ -4,12 +4,18 @@ type LogoProps = {
 
 export function Logo({ className = "h-10 w-auto" }: LogoProps) {
   return (
-    // The lockup is the supplied brand file. Native img keeps the SVG vectors exact.
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src="/brand/Lord%20Bae.svg"
-      alt="Lord Bae"
-      className={className}
-    />
+    <span
+      className={`inline-flex items-center gap-[0.42em] leading-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)] ${className}`}
+    >
+      {/* Native img keeps the supplied artwork exact. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="/brand/knight.png" alt="" className="h-full w-auto shrink-0" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/brand/lord-bae-wordmark.png"
+        alt="Lord Bae"
+        className="h-[46%] w-auto shrink-0"
+      />
+    </span>
   );
 }

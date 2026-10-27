@@ -19,6 +19,6 @@ Inquiry notes are validated and acknowledged. Wire the route in `app/api/inquiry
 
 ## Logo
 
-The header reads `public/brand/Lord Bae.svg` and does not redraw it. The file in this repository is a typographic stand-in in the brand red `#c80e0e`: the original “Lord Bae.svg” was not attached to the workspace. Drop the exact file in at the same path and the lockup updates without a code change.
+The lockup is the knight engraving in `public/brand/knight.png` beside the gothic wordmark in `public/brand/lord-bae-wordmark.png`.
 
 The tab icon is the crossed-swords emoji: `public/favicon.svg`, `public/favicon.ico`, and `public/apple-touch-icon.png`.

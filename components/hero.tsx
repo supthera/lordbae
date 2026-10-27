@@ -76,7 +76,7 @@ export function Hero() {
           {...rise}
           transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Logo className="h-11 w-auto max-w-[70vw] md:h-14" />
+          <Logo className="h-20 w-auto max-w-[78vw] sm:h-24 md:h-28" />
         </motion.div>
         <div>
         <motion.p
