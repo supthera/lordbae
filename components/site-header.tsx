@@ -25,7 +25,8 @@ export function SiteHeader() {
     setOpen(false);
   }
   const isHome = pathname === "/";
-  const showLogo = !isHome || scrolled || open;
+  const isCollection = pathname.startsWith("/collection");
+  const showLogo = !isCollection && (!isHome || scrolled || open);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -74,14 +75,20 @@ export function SiteHeader() {
             : "pointer-events-none bg-transparent"
       }`}
     >
-      <div className="relative flex items-center justify-between px-[6vw] py-5">
-        <Link
-          href="/"
-          aria-label="Lord Bae, home"
-          className={`transition-opacity duration-700 ${showLogo ? "opacity-100" : "pointer-events-none opacity-0"}`}
-        >
-          <Logo className="h-14 w-auto max-w-[62vw] sm:h-16 sm:max-w-none" />
-        </Link>
+      <div
+        className={`relative flex items-center px-[6vw] py-5 ${
+          isCollection ? "justify-end" : "justify-between"
+        }`}
+      >
+        {isCollection ? null : (
+          <Link
+            href="/"
+            aria-label="Lord Bae, home"
+            className={`transition-opacity duration-700 ${showLogo ? "opacity-100" : "pointer-events-none opacity-0"}`}
+          >
+            <Logo className="h-14 w-auto max-w-[62vw] sm:h-16 sm:max-w-none" />
+          </Link>
+        )}
         <nav className="pointer-events-auto hidden items-center gap-9 md:flex" aria-label="Primary">
           {links.map((link) => (
             <Link
