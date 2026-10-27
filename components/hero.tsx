@@ -100,7 +100,7 @@ export function Hero() {
           {...rise}
           transition={{ duration: 1, delay: 0.66, ease: [0.16, 1, 0.3, 1] }}
         >
-          <Link href="/#collection" onClick={openCollection} className="cta" data-cursor>
+          <Link href="/#collection" onClick={openCollection} className="cta">
             View the Collection
             <i />
           </Link>

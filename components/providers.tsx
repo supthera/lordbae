@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
 
-import { Cursor } from "@/components/cursor";
-
 let lenisInstance: Lenis | null = null;
 
 export function getLenis() {
@@ -51,10 +49,5 @@ export function Providers({ children }: { children: React.ReactNode }) {
     return () => window.clearTimeout(timer);
   }, [pathname]);
 
-  return (
-    <>
-      <Cursor />
-      {children}
-    </>
-  );
+  return children;
 }
