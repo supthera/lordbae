@@ -12,7 +12,7 @@ export function Logo({ className = "h-10 w-auto" }: LogoProps) {
       <img
         src="/brand/lord-bae-wordmark.png"
         alt="Lord Bae"
-        className="h-[46%] w-auto shrink-0"
+        className="h-[40%] w-auto shrink-0"
       />
     </span>
   );
