@@ -7,7 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 import { Logo } from "@/components/logo";
 import { getLenis } from "@/components/providers";
-import { siteLinks } from "@/lib/nav";
+import { headerLinks } from "@/lib/nav";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -85,7 +85,7 @@ export function SiteHeader() {
           </Link>
         )}
         <nav className="pointer-events-auto hidden items-center gap-9 md:flex" aria-label="Primary">
-          {siteLinks.map((link) => {
+          {headerLinks.map((link) => {
             const current = link.href === "/tools" && pathname.startsWith("/tools");
             return (
               <Link
@@ -125,7 +125,7 @@ export function SiteHeader() {
             className="fixed inset-0 z-40 flex flex-col justify-end bg-[#0a0a0a] px-[6vw] pt-28 pb-16 md:hidden"
           >
             <ul className="space-y-6">
-              {siteLinks.map((link, index) => (
+              {headerLinks.map((link, index) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
