@@ -3,29 +3,13 @@ import Image from "next/image";
 
 import { siteName } from "@/lib/site";
 
+import PropertyTaxByState from "@/components/PropertyTaxByState";
+
 export const metadata: Metadata = {
   title: "Property Tools",
   description:
-    "Instruments kept by the office of Lord Bae for the houses in the collection: record, custody, and correspondence.",
+    "Effective residential property tax rates for the fifty states and the District of Columbia, computed from U.S. Census ACS medians.",
 };
-
-const tools = [
-  {
-    index: "01",
-    name: "Record",
-    detail: "Plans, measures, and the condition of a house, kept with the residence rather than in a public file.",
-  },
-  {
-    index: "02",
-    name: "Custody",
-    detail: "Who holds a house, and on what terms. Nothing here is an offering.",
-  },
-  {
-    index: "03",
-    name: "Correspondence",
-    detail: "Introductions tied to a named residence. Particulars follow only after the office has read the note.",
-  },
-];
 
 export default function PropertyToolsPage() {
   return (
@@ -36,7 +20,7 @@ export default function PropertyToolsPage() {
           <h1 className="display mt-5 max-w-3xl text-[clamp(3.2rem,7vw,6.2rem)]">Property Tools</h1>
           <div className="mt-8 h-px w-16 bg-[#c80e0e]" />
           <p className="lede mt-8 max-w-xl">
-            Instruments for the houses in the collection. They are not a market, and they are not published with the rooms.
+            Effective residential property tax rates for the fifty states and the District of Columbia. Median taxes paid, divided by median home value, kept with the office.
           </p>
         </div>
         <p className="text-[0.72rem] tracking-[0.22em] text-[#c6b49a] uppercase lg:col-span-4 lg:col-start-9 lg:pb-2">
@@ -57,18 +41,13 @@ export default function PropertyToolsPage() {
         />
       </div>
 
-      <ol className="mt-16 border-t border-[rgba(244,239,230,0.16)] md:mt-24">
-        {tools.map((tool) => (
-          <li
-            key={tool.name}
-            className="grid gap-4 border-b border-[rgba(244,239,230,0.16)] py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-10"
-          >
-            <p className="text-[0.68rem] tracking-[0.22em] text-[#c6b49a] md:col-span-2">{tool.index}</p>
-            <h2 className="display text-[clamp(2rem,4vw,3.2rem)] md:col-span-4">{tool.name}</h2>
-            <p className="quiet max-w-md text-[1.02rem] md:col-span-5 md:col-start-8">{tool.detail}</p>
-          </li>
-        ))}
-      </ol>
+      <section className="mt-16 md:mt-24" aria-labelledby="effective-rates">
+        <p className="eyebrow">01</p>
+        <h2 id="effective-rates" className="display mt-4 text-[clamp(2.4rem,5vw,4rem)]">
+          Effective rates
+        </h2>
+        <PropertyTaxByState className="mt-10" />
+      </section>
     </main>
   );
 }

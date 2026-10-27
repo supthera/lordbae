@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Class strategy so the rate table can opt into dark styles on this always-dark site. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-cormorant), "Palatino Linotype", Palatino, serif;
@@ -91,6 +94,10 @@ body {
   input,
   textarea {
     cursor: text;
+  }
+
+  select {
+    cursor: auto;
   }
 }
 
