@@ -80,7 +80,7 @@ export function SiteHeader() {
           aria-label="Lord Bae, home"
           className={`transition-opacity duration-700 ${showLogo ? "opacity-100" : "pointer-events-none opacity-0"}`}
         >
-          <Logo className="h-12 w-auto max-w-[58vw] sm:h-14 sm:max-w-none" />
+          <Logo className="h-16 w-auto max-w-[70vw] sm:h-20 sm:max-w-none" />
         </Link>
         <nav className="pointer-events-auto hidden items-center gap-9 md:flex" aria-label="Primary">
           {links.map((link) => (

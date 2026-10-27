@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="border-t border-[rgba(244,239,230,0.14)] px-[6vw] py-14">
       <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
         <div>
-          <Logo className="h-14 w-auto" />
+          <Logo className="h-20 w-auto" />
           <p className="mt-4 text-[0.72rem] tracking-[0.22em] text-[#c6b49a] uppercase">
             By appointment
           </p>
