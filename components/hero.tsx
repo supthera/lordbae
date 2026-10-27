@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-import { Logo } from "@/components/logo";
 import { getLenis } from "@/components/providers";
 
 const motes = [
@@ -71,13 +70,7 @@ export function Hero() {
             ))}
       </div>
 
-      <div className="relative flex min-h-[100svh] flex-col justify-between px-[6vw] pt-5 pb-16 md:pb-20">
-        <motion.div
-          {...rise}
-          transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Logo className="h-44 w-auto max-w-[88vw] sm:h-52 md:h-60" />
-        </motion.div>
+      <div className="relative flex min-h-[100svh] flex-col justify-end px-[6vw] pt-5 pb-16 md:pb-20">
         <div>
         <motion.p
           className="eyebrow mb-5"
